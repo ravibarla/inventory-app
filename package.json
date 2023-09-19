@@ -1,0 +1,22 @@
+{
+  "name": "inventory-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ravibarla/inventory-app.git"
+  },
+  "author": "ravibarla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ravibarla/inventory-app/issues"
+  },
+  "homepage": "https://github.com/ravibarla/inventory-app#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
