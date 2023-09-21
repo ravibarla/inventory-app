@@ -22,8 +22,9 @@ server.get("/", productController.getProducts);
 server.get("/add-product", productController.getAddForm);
 server.post(
   "/",
-  validateMiddleware,
   uploadFile.single("imageURL"),
+  validateMiddleware,
+
   productController.addNewProduct
 );
 server.get("/update-product/:id", productController.getUpdateProductView);
