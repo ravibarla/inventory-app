@@ -1,6 +1,7 @@
 export default class ProductModel {
   constructor(_id, _name, _desc, _price, _imageUrl) {
     (this.id = _id),
+      (this.name = _name),
       (this.desc = _desc),
       (this.price = _price),
       (this.imageUrl = _imageUrl);
@@ -18,8 +19,14 @@ export default class ProductModel {
     );
     products.push(newProduct);
   }
+  static update(productObj) {
+    const index=products.findIndex((p) => p.id == productObj.id);
+    products[index]=productObj
+  }
   static getById(id) {
-    products.find((p) => p.id == id);
+    // products.map((p) => console.log(p));
+    return products.find((p) => p.id == id);
+    // console.log("id received :", id);
   }
 }
 var products = [
