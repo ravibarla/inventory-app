@@ -55,6 +55,6 @@ export default class ProductController {
     }
     ProductModel.delete(id);
     var products = ProductModel.get();
-    return res.render(("products", { products }));
+    res.render("products", { products });
   }
 }
