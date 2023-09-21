@@ -7,7 +7,7 @@ const validateMiddleware = async (req, res, next) => {
   const rules = [
     body("name").notEmpty().withMessage("name should be valid"),
     body("price").isFloat({ gt: 0 }).withMessage("price should be positive"),
-    body("imageUrl").isURL().withMessage("url should be valid"),
+    // body("imageUrl").isURL().withMessage("url should be valid"),
   ];
   //2. run those rules
   await Promise.all(rules.map((rule) => rule.run(req)));
