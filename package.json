@@ -42,7 +42,9 @@
 
     "express-ejs-layouts": "^2.5.1",
 
-    "express-validator": "^7.0.1"
+    "express-validator": "^7.0.1",
+
+    "react-scripts": "^5.0.1"
 
   },
 
