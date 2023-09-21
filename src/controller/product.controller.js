@@ -22,4 +22,19 @@ export default class ProductController {
     // return res.render("products", { products });
     return res.render("products", { products });
   }
+  getUpdateProductView(req, res, next) {
+    //1. if product exist then return view
+    const { id } = req.body;
+    const productFound = ProductModel.getById(id);
+    if (productFound) {
+      res.render("update-product", {
+        product: productFound,
+        errorMessage: null,
+      });
+    }
+    //2. else return error
+    else {
+      res.status(401).send("Product not found");
+    }
+  }
 }
