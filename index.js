@@ -21,6 +21,9 @@ server.set("views", path.join(path.resolve(), "src", "views"));
 const productController = new ProductController();
 const userController = new UserController();
 server.get("/register", userController.getRegister);
+server.get("/login", userController.getLogin);
+server.post("/login", userController.postLogin);
+server.post("/register", userController.postRegister);
 server.get("/", productController.getProducts);
 server.get("/add-product", productController.getAddForm);
 server.post(
