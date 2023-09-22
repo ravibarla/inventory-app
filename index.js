@@ -7,9 +7,13 @@ import { uploadFile } from "./src/middlewares/fileUpload.middleware.js";
 import UserController from "./src/controller/user.controller.js";
 import session from "express-session";
 import { auth } from "./src/middlewares/auth.middleware.js";
+import { setLastVisit } from "./src/middlewares/lastVist.middleware.js";
+import cookieParser from "cookie-parser";
 const server = express();
 
 server.use(express.static("public"));
+server.use(cookieParser());
+server.use(setLastVisit);
 server.use(
   session({
     secret: "SecretKey",
