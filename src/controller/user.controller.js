@@ -2,13 +2,6 @@ import UserModel from "../models/user.model.js";
 import ProductModel from "../models/product.model.js";
 
 export default class UserController {
-  static add(name, email, password) {
-    const newUser = new UserModel(user.length + 1, name, email, password);
-  }
-  static isValidUser(email, password) {
-    const res = users.find((u) => u.email == email && u.password == password);
-    return res;
-  }
   getRegister(req, res) {
     res.render("register");
   }
@@ -17,19 +10,20 @@ export default class UserController {
   }
   postRegister(req, res) {
     const { name, email, password } = req.body;
+    UserModel.add(name, email, password);
     res.render("login", { errorMessage: null });
   }
   postLogin(req, res) {
     const { email, password } = req.body;
-    const user = isValidUser(email, password);
+    const user = UserModel.isValidUser(email, password);
     if (!user) {
       return res.render("login", {
         errorMessage: "! Invalid Credential",
       });
     }
-      let products = ProductModel.get();
-      return res.render("products", { products });
-    }
+    let products = ProductModel.get();
+    return res.render("products", { products });
   }
+}
 
 var users = [];
