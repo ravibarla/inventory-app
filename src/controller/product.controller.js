@@ -4,14 +4,13 @@ import ProductModel from "../models/product.model.js";
 export default class ProductController {
   getProducts(req, res) {
     let products = ProductModel.get();
-    // console.log(products);
-    // return res.sendFile(
-    //   path.join(path.resolve(), "src", "views", "products.html")
-    // );
-    res.render("products", { products });
+    res.render("products", { products, userEmail: req.session.userEmail });
   }
   getAddForm(req, res) {
-    return res.render("new-product", { errorMessage: null });
+    return res.render("new-product", {
+      errorMessage: null,
+      userEmail: req.session.userEmail,
+    });
   }
   addNewProduct(req, res) {
     //access data from form
@@ -21,7 +20,10 @@ export default class ProductController {
     ProductModel.add(image, desc, price, imageURL);
     let products = ProductModel.get();
     // return res.render("products", { products });
-    return res.render("products", { products });
+    return res.render("products", {
+      products,
+      userEmail: req.session.userEmail,
+    });
   }
   getUpdateProductView(req, res, next) {
     //1. if product exist then return view
@@ -33,6 +35,7 @@ export default class ProductController {
       res.render("update-product", {
         product: productFound,
         errorMessage: null,
+        userEmail: req.session.userEmail,
       });
     }
     //2. else return error
@@ -44,7 +47,10 @@ export default class ProductController {
     ProductModel.update(req.body);
     let products = ProductModel.get();
     console.log("products :", products);
-    return res.render("products", { products });
+    return res.render("products", {
+      products,
+      userEmail: req.session.userEmail,
+    });
   }
   deleteProduct(req, res, next) {
     const id = req.params.id;
@@ -56,6 +62,6 @@ export default class ProductController {
     }
     ProductModel.delete(id);
     var products = ProductModel.get();
-    res.render("products", { products });
+    res.render("products", { products, userEmail: req.session.userEmail });
   }
 }

@@ -33,6 +33,7 @@ const userController = new UserController();
 server.get("/register", userController.getRegister);
 server.get("/login", userController.getLogin);
 server.post("/login", userController.postLogin);
+server.get("/logout", userController.logout);
 server.post("/register", userController.postRegister);
 server.get("/", auth, productController.getProducts);
 server.get("/add-product", auth, productController.getAddForm);
