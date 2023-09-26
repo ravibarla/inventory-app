@@ -16,8 +16,9 @@ export default class ProductController {
   addNewProduct(req, res) {
     //access data from form
     // console.log(req.body);
-
-    ProductModel.add(req.body);
+    const { image, desc, price } = req.body;
+    const imageURL = "images/" + req.file.filename;
+    ProductModel.add(image, desc, price, imageURL);
     let products = ProductModel.get();
     // return res.render("products", { products });
     return res.render("products", { products });
@@ -50,6 +51,6 @@ export default class ProductController {
     }
     ProductModel.delete(id);
     var products = ProductModel.get();
-    return res.render("products", { products });
+    return res.render(("products", { products }));
   }
 }
