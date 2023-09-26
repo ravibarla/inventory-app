@@ -53,5 +53,8 @@ server.post("/delete-product/:id", auth, productController.deleteProduct);
 
 server.use(express.static("src/views"));
 const PORT=process.env.PORT||3100
-server.listen(3100);
-console.log("server is running in 3100 port");
+server.listen(PORT,()=>{
+  console.log("server is running in 3100 port");
+})
+// server.listen(3100);
+// console.log("server is running in 3100 port");
