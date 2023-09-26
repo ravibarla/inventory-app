@@ -13,6 +13,7 @@ const server = express();
 
 server.use(express.static("public"));
 server.use(cookieParser());
+server.use(setLastVisit);
 // server.use(setLastVisit);
 server.use(
   session({
