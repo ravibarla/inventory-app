@@ -64,5 +64,9 @@ export default class ProductController {
     var products = ProductModel.get();
     res.render("products", { products, userEmail: req.session.userEmail });
   }
+<<<<<<< HEAD
   
 }
+=======
+}
+>>>>>>> 00c9a2a1d26d2e3dba5137594eb94f9bcbf38ccc

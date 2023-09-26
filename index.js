@@ -13,7 +13,7 @@ const server = express();
 
 server.use(express.static("public"));
 server.use(cookieParser());
-server.use(setLastVisit);
+// server.use(setLastVisit);
 server.use(
   session({
     secret: "SecretKey",
@@ -39,7 +39,7 @@ server.get("/login", userController.getLogin);
 server.post("/login", userController.postLogin);
 server.get("/logout", userController.logout);
 server.post("/register", userController.postRegister);
-server.get("/", auth, productController.getProducts);
+server.get("/", auth, setLastVisit,productController.getProducts);
 server.get("/add-product", auth, productController.getAddForm);
 server.post(
   "/",
@@ -52,6 +52,9 @@ server.post("/update-product", auth, productController.postUpdateProductView);
 server.post("/delete-product/:id", auth, productController.deleteProduct);
 
 server.use(express.static("src/views"));
-
-server.listen(3100);
-console.log("server is running in 3100 port");
+const PORT=process.env.PORT||3100
+server.listen(PORT,()=>{
+  console.log("server is running in 3100 port");
+})
+// server.listen(3100);
+// console.log("server is running in 3100 port");
